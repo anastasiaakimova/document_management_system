@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: true
+    database: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/document_system
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT_ID}
+            client_secret: ${CLIENT_SECRET}
+            redirectUri: ${REDIRECT_URI}
+            scope:
+              - email
+              - profile
+
+jwt:
+  header: ${JWT_HEADER}
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+
+
+logging:
+  pattern:
+    console: "${spring.application.name} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}]){blue} [%thread] %clr(%level) %clr(%logger{36}){magenta} - %msg%n"
+  level:
+    ROOT: INFO
+    org.springframework: WARN
+    org.apache: WARN
+    org.hibernate: WARN
