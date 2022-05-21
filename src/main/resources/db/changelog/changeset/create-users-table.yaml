@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users
+      author: Anastasia Akimova
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: unique_users_email
+              - column:
+                  name: password
+                  type: varchar(50)
+              - column:
+                  name: image_url
+                  type: varchar(255)
+              - column:
+                  name: provider
+                  type: varchar(255)
+              - column:
+                  name: provider_id
+                  type: varchar(255)
+              - column:
+                  name: role
+                  type: varchar(255)
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: created_on
+                  type: timestamp
+              - column:
+                  name: updated_on
+                  type: timestamp
