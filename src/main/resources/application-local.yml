@@ -21,17 +21,17 @@ spring:
       client:
         registration:
           google:
-            client-id: ${CLIENT_ID}
-            client_secret: ${CLIENT_SECRET}
-            redirectUri: ${REDIRECT_URI}
+            client-id: "344035955281-88s4v4dprr6gcipgungt0kj6qmddgi4f.apps.googleusercontent.com"
+            client_secret: "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"
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
               - email
               - profile
 
 jwt:
-  header: ${JWT_HEADER}
-  secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION}
+  header: Authorization
+  secret: Bearer
+  expiration: 123456780000
 
 
 logging:
